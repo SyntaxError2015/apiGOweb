@@ -1,0 +1,54 @@
+<html ng-app="apiGO">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/site.css"/>
+    <link rel="stylesheet" href="/bower_components/angular-material/angular-material.css">
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,500&subset=latin,latin-ext' rel='stylesheet'
+          type='text/css'>
+
+    <!--scripts-->
+    <script src="/js/jquery-1.10.2.min.js" type="text/javascript"></script>
+    <script src="/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/js/angular.min.js"></script>
+    <script src="/js/angular-cookies.min.js"></script>
+    <script src="/js/app.js" type="text/javascript"></script>
+    <script src="/bower_components/angular-aria/angular-aria.js"></script>
+    <script src="/bower_components/angular-animate/angular-animate.js"></script>
+    <script src="/bower_components/angular-material/angular-material.js"></script>
+</head>
+
+<body>
+<div layout="column" layout-fill>
+    <md-toolbar>
+        <div class="md-toolbar-tools app-toolbar">
+            <span id="logo">api<span class="orange">GO</span></span>
+            <!-- fill up the space between left and right area -->
+            <span flex></span>
+            <md-button class="orange-background">
+                Right Bar Button
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-content>
+        Hello!<br>
+
+        <h3 ng-init="asa = 'test'">{{asa}}</h3>
+
+        <div ng-controller="UserController as c">
+            <input type="text" ng-model="c.userKey"/>
+            <span ng-bind="c.userKey"></span>
+            <md-button class="md-raised" ng-click="c.save()">save</md-button>
+        </div>
+
+        <h3>{{user}}</h3>
+    </md-content>
+</div>
+
+
+</body>
+
+</html>

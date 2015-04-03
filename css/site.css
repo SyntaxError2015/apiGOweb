@@ -1,0 +1,17 @@
+.app-toolbar{
+    font-family: 'Ubuntu', sans-serif;
+    background-color: rgba(63, 88, 99, 1);
+}
+
+#logo{
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.orange{
+    color:rgba(245, 130, 32, 1);
+}
+
+.orange-background{
+    background-color:rgba(245, 130, 32, 1);
+}
