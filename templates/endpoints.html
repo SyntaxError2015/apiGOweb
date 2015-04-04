@@ -1,0 +1,38 @@
+<md-toolbar class="md-theme-light">
+    <h2 class="md-toolbar-tools">
+        <span>Your endpoints</span>
+    </h2>
+</md-toolbar>
+<md-content>
+
+    <div class="endpoints-layout" layout="row" layout-margin layout-padding layout-wrap>
+
+        <div flex class="my-width" ng-repeat="endpoint in EndpointCtrl.endpoints | orderBy: 'name'">
+            <div layout="row" class="endpoint-title">{{endpoint.name}}
+                <div flex></div>
+                <md-switch ng-model="data.cb1" aria-label="On">
+                </md-switch>
+            </div>
+            <hr>
+            <b>Endpoint link</b><br/>
+            <a href="/api{{endpoint.urlPath}}">http://localhost/api{{endpoint.urlPath}}</a><br/>
+            <br/>
+            <b>Description</b><br/>
+            <span ng-bind="endpoint.description | limitTo:90"></span>
+            <hr>
+
+            <div layout="row">
+                <md-button class="md-raised md-warn">Delete</md-button>
+                <div flex></div>
+                <md-button class="md-raised">Edit</md-button>
+            </div>
+        </div>
+
+    </div>
+
+
+</md-content>
+
+<center>
+    <md-progress-circular md-diameter="45" md-mode="indeterminate"></md-progress-circular>
+</center>

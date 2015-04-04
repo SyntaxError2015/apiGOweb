@@ -1,17 +1,147 @@
-.app-toolbar{
+.app-toolbar {
     font-family: 'Ubuntu', sans-serif;
     background-color: rgba(63, 88, 99, 1);
 }
 
-#logo{
+#logo {
     font-size: 32px;
     font-weight: bold;
 }
 
-.orange{
-    color:rgba(245, 130, 32, 1);
+md-content.md-default-theme {
+    background-color: rgba(77, 89, 101, 1);
+    font-family: 'Ubuntu', sans-serif;
 }
 
-.orange-background{
-    background-color:rgba(245, 130, 32, 1);
+.my-width{
+    min-width: 350px;
+}
+.endpoints-layout > div{
+    background-color: white;
+}
+.endpoints-layout md-checkbox{
+    margin: 0;
+}
+.endpoints-layout md-switch{
+    margin: 0;
+}
+.endpoints-layout{
+    font-family: 'Ubuntu', sans-serif;
+    font-size:16px;
+}
+.endpoint-title {
+    color: rgb(245, 130, 32);
+    font-size: 24px;
+}
+
+.endpoints-layout hr {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+/*.body{*/
+/*background-image: url('/images/back.jpg');*/
+/*background-size: cover;*/
+/*}*/
+
+/*.content{*/
+/*background-color: transparent;*/
+/*}*/
+
+/* Dialogs */
+.register-dialog {
+    height: auto;
+    max-height: 280px;
+    width: 400px;
+    padding: 5px;
+}
+
+/* Tabs Color */
+md-tabs.md-default-theme md-tabs-ink-bar {
+    color: rgb(245, 130, 32);
+    background: rgb(245, 130, 32);
+}
+
+md-tabs.md-default-theme md-tab.active {
+    color: rgb(245, 130, 32);
+}
+
+md-toolbar.md-default-theme {
+    background: rgb(245, 130, 32);
+}
+
+/* spinner color */
+md-progress-circular.md-default-theme .md-inner .md-left .md-half-circle {
+    border-left-color: rgb(245, 130, 32);
+    border-top-color: rgb(245, 130, 32);
+}
+
+md-progress-circular.md-default-theme .md-inner .md-right .md-half-circle {
+    border-right-color: rgb(245, 130, 32);
+    border-top-color: rgb(245, 130, 32);
+}
+
+.orange {
+    color: rgba(245, 130, 32, 1);
+}
+
+.orange-background {
+    background-color: rgba(245, 130, 32, 1);
+}
+
+/*message*/
+#message {
+    display: none;
+    position: fixed;
+    z-index: 9000;
+    width: auto;
+    height: auto;
+    font-size: 24px;
+    right: 10px;
+    bottom: 10px;
+    font-family: 'Roboto', sans-serif;
+}
+
+/*effects*/
+.loading {
+    opacity: 0;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    margin-left: -300px;
+    margin-top: -100px;
+    width: 600px;
+    height: 200px;
+    background-image: url("/images/loading.png");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    -webkit-animation: fadeInOut 1s infinite;
+    animation: fadeInOut 1s infinite;
+    display: none;
+    z-index: 9000;
+}
+
+@-webkit-keyframes fadeInOut {
+    0% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.5;
+    }
+}
+
+@keyframes fadeInOut {
+    0% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.5;
+    }
 }
