@@ -11,8 +11,13 @@ app.config(['$routeProvider',
                 controller: 'EndpointController',
                 controllerAs: 'EndpointCtrl'
             }).
+            when('/history/:id', {
+                templateUrl: '/templates/history.html',
+                controller: 'HistoryController',
+                controllerAs: 'HistoryCtrl'
+            }).
             otherwise({
-                redirectTo: '/#/'
+                redirectTo: '/'
             });
     }]);
 
@@ -22,280 +27,189 @@ function addDays(date, days) {
     return result;
 }
 
-app.controller('EndpointController', function () {
-    this.endpoints = [
+app.controller('HistoryController', ['$http', '$rootScope', '$routeParams', function ($http, $rootScope, $routeParams) {
+
+    if (!$rootScope.loggedIn) {
+        if (window.location != '/#/')
+            window.location.replace('/#/');
+    }
+
+    this.history = [
         {
-            "id": "551faa4696d4c24c6a000001",
-            "urlPath": "/uTnALoNH",
-            "user": {
-                "id": "",
-                "username": "",
-                "password": "",
-                "firstName": "",
-                "lastName": "",
-                "email": "",
-                "facebookId": "",
-                "googleId": ""
-            },
-            "name": "test endpoint",
-            "description": "desc",
-            "authentication": {
-                "userId": "",
-                "password": ""
-            },
-            "get": {
-                "statusCode": 200,
-                "delay": 0,
-                "response": "Hello world!",
-                "function": "Api.GenericGET"
-            },
-            "post": {
-                "statusCode": 0,
-                "delay": 0,
-                "response": "",
-                "function": ""
-            },
-            "put": {
-                "statusCode": 200,
-                "delay": 0,
-                "response": "Hello world!",
-                "function": "Api.GenericPUT"
-            },
-            "delete": {
-                "statusCode": 200,
-                "delay": 0,
-                "response": "Hello world!",
-                "function": "Api.GenericDELETE"
-            }
-        },
-        {
-            "id": "551face096d4c22048000001",
-            "urlPath": "/EUbDYOZw",
-            "user": {
-                "id": "",
-                "username": "",
-                "password": "",
-                "firstName": "",
-                "lastName": "",
-                "email": "",
-                "facebookId": "",
-                "googleId": ""
-            },
-            "name": "",
-            "description": "",
-            "authentication": {
-                "userId": "",
-                "password": ""
-            },
-            "get": {
-                "statusCode": 200,
-                "delay": 0,
-                "response": "Hello world!",
-                "function": "Api.GenericGET"
-            },
-            "post": {
-                "statusCode": 200,
-                "delay": 0,
-                "response": "Hello world!",
-                "function": "Api.GenericPOST"
-            },
-            "put": {
-                "statusCode": 200,
-                "delay": 0,
-                "response": "Hello world!",
-                "function": "Api.GenericPUT"
-            },
-            "delete": {
-                "statusCode": 200,
-                "delay": 0,
-                "response": "Hello world!",
-                "function": "Api.GenericDELETE"
-            }
-        },
-        {
-            "id": "551face096d4c22048000002",
-            "urlPath": "/WAF5TEx8",
-            "user": {
-                "id": "",
-                "username": "",
-                "password": "",
-                "firstName": "",
-                "lastName": "",
-                "email": "",
-                "facebookId": "",
-                "googleId": ""
-            },
-            "name": "",
-            "description": "",
-            "authentication": {
-                "userId": "",
-                "password": ""
-            },
-            "get": {
-                "statusCode": 200,
-                "delay": 0,
-                "response": "Hello world!",
-                "function": "Api.GenericGET"
-            },
-            "post": {
-                "statusCode": 200,
-                "delay": 0,
-                "response": "Hello world!",
-                "function": "Api.GenericPOST"
-            },
-            "put": {
-                "statusCode": 200,
-                "delay": 0,
-                "response": "Hello world!",
-                "function": "Api.GenericPUT"
-            },
-            "delete": {
-                "statusCode": 200,
-                "delay": 0,
-                "response": "Hello world!",
-                "function": "Api.GenericDELETE"
-            }
-        },
-        {
-            "id": "551face196d4c22048000003",
-            "urlPath": "/Ngfj5LH9",
-            "user": {
-                "id": "",
-                "username": "",
-                "password": "",
-                "firstName": "",
-                "lastName": "",
-                "email": "",
-                "facebookId": "",
-                "googleId": ""
-            },
-            "name": "",
-            "description": "",
-            "authentication": {
-                "userId": "",
-                "password": ""
-            },
-            "get": {
-                "statusCode": 200,
-                "delay": 0,
-                "response": "Hello world!",
-                "function": "Api.GenericGET"
-            },
-            "post": {
-                "statusCode": 200,
-                "delay": 0,
-                "response": "Hello world!",
-                "function": "Api.GenericPOST"
-            },
-            "put": {
-                "statusCode": 200,
-                "delay": 0,
-                "response": "Hello world!",
-                "function": "Api.GenericPUT"
-            },
-            "delete": {
-                "statusCode": 200,
-                "delay": 0,
-                "response": "Hello world!",
-                "function": "Api.GenericDELETE"
-            }
-        },
-        {
-            "id": "551face196d4c22048000004",
-            "urlPath": "/Mlb4ddgO",
-            "user": {
-                "id": "",
-                "username": "",
-                "password": "",
-                "firstName": "",
-                "lastName": "",
-                "email": "",
-                "facebookId": "",
-                "googleId": ""
-            },
-            "name": "",
-            "description": "",
-            "authentication": {
-                "userId": "",
-                "password": ""
-            },
-            "get": {
-                "statusCode": 200,
-                "delay": 0,
-                "response": "Hello world!",
-                "function": "Api.GenericGET"
-            },
-            "post": {
-                "statusCode": 200,
-                "delay": 0,
-                "response": "Hello world!",
-                "function": "Api.GenericPOST"
-            },
-            "put": {
-                "statusCode": 200,
-                "delay": 0,
-                "response": "Hello world!",
-                "function": "Api.GenericPUT"
-            },
-            "delete": {
-                "statusCode": 200,
-                "delay": 0,
-                "response": "Hello world!",
-                "function": "Api.GenericDELETE"
-            }
-        },
-        {
-            "id": "551face296d4c2204800000e",
-            "urlPath": "/i5IfoIP7",
-            "user": {
-                "id": "",
-                "username": "",
-                "password": "",
-                "firstName": "",
-                "lastName": "",
-                "email": "",
-                "facebookId": "",
-                "googleId": ""
-            },
-            "name": "",
-            "description": "",
-            "authentication": {
-                "userId": "",
-                "password": ""
-            },
-            "get": {
-                "statusCode": 200,
-                "delay": 0,
-                "response": "Hello world!",
-                "function": "Api.GenericGET"
-            },
-            "post": {
-                "statusCode": 200,
-                "delay": 0,
-                "response": "Hello world!",
-                "function": "Api.GenericPOST"
-            },
-            "put": {
-                "statusCode": 200,
-                "delay": 0,
-                "response": "Hello world!",
-                "function": "Api.GenericPUT"
-            },
-            "delete": {
-                "statusCode": 200,
-                "delay": 0,
-                "response": "Hello world!",
-                "function": "Api.GenericDELETE"
-            }
+            id: '',
+            time: '',
+            header: '',
+            parameters: [{
+                key: '',
+                value: ''
+            }],
+            body: '',
+            responseStatusCode: '',
+            responseMessage: '',
+            responseType: '',
+            responseBody: ''
         }
     ];
-});
+    this.paramId = $routeParams.id;
+}]);
+
+app.controller('EndpointController', ['$http', '$mdDialog', '$rootScope', function ($http, $mdDialog, $rootScope) {
+    var ctrl = this;
+    var ctrlE = this;
+    this.methods = ["GET", "POST", "PUT", "DELETE"];
+
+    //make the methods null if not used
+    this.removeNulls = function (endpoints) {
+        for (var i = 0; i < endpoints.length; i++) {
+            var endp = endpoints[i];
+            for (var j = 0; j < 4; j++) {
+                if (endp.rest[this.methods[j]].statusCode == 0)
+                    endp.rest[this.methods[j]] = null;
+            }
+        }
+    };
+
+
+    if (!$rootScope.loggedIn) {
+        if (window.location != '/#/')
+            window.location.replace('/#/');
+    }
+
+    $http.get('/api/endpoints?token=' + $rootScope.token).success(function (data) {
+        ctrl.endpoints = data;
+        ctrl.removeNulls(ctrl.endpoints);
+        //alert(JSON.stringify(ctrl.endpoints));
+    }).error(function (data) {
+        showMessage("alert-danger", "Endpoints failed to load!");
+    });
+
+
+    this.create = function () {
+        $http.post('/api/endpoints?token=' + $rootScope.token, 'post').success(function (data) {
+            showMessage("alert-success", "Endpoint created!");
+            ctrl.endpoints = [data].concat(ctrl.endpoints);
+            ctrl.removeNulls(ctrl.endpoints);
+        }).error(function (data) {
+            showMessage("alert-danger", "Endpoint creation failed: " + data);
+        });
+    };
+
+    this.update = function (endpoint) {
+        alert(JSON.stringify(endpoint));
+        $http.put('/api/endpoints?token=' + $rootScope.token, endpoint).success(function (data) {
+            showMessage("alert-success", "Endpoint modified!");
+            ctrlE.endpoints[ctrlE.endpoints.indexOf(endpoint)] = data;
+            ctrlE.removeNulls(ctrlE.endpoints);
+        }).error(function (data) {
+            showMessage("alert-danger", "Endpoint modification failed: " + data);
+        });
+    };
+
+    this.delete = function (endpoint) {
+        var index = ctrl.endpoints.indexOf(endpoint);
+
+        var confirm = $mdDialog.confirm()
+            .title('Are you sure you want to delete the endpoint?')
+            .content('The endpoind and all its history will be deleted.')
+            .ariaLabel('Delete Endpoint')
+            .ok('Yes')
+            .cancel('No');
+        $mdDialog.show(confirm).then(function () {
+            if (index >= 0)
+                $http.delete('/api/endpoints?token=' + $rootScope.token + '&id=' + endpoint.id).success(function (data) {
+                    showMessage("alert-success", "Endpoint deleted!");
+                    ctrl.endpoints.splice(index, 1);
+                }).error(function (data) {
+                    showMessage("alert-danger", "Endpoint deletion failed: " + data);
+                });
+            else
+                showMessage("alert-danger", "Endpoint deletion failed: wrong endpoint ID! Reload page!");
+        }, function () {
+            showMessage("alert-danger", "Canceled.");
+        });
+    };
+
+    this.edit = function (endpoint) {
+        $mdDialog.show({
+            controller: ['$http', function ($http) {
+                var ctrl = this;
+                this.endpoint = endpoint;
+                this.methods = ["GET", "POST", "PUT", "DELETE"];
+
+                this.selectedIndex = 0;
+                this.previousIndex = 0;
+
+                this.change = function (isOk) {
+                    if (!isOk && this.restEnabled) {
+                        showMessage("alert-danger", "Invalid fields!");
+                        this.selectedIndex = this.previousIndex;
+                    } else {
+                        this.rest = endpoint.rest[this.methods[this.selectedIndex]];
+                        this.restEnabled = !(this.rest == null || this.rest == undefined);
+                        this.previousIndex = this.selectedIndex;
+                    }
+                };
+                this.change(true);
+
+
+                this.toggleRest = function () {
+                    if (this.restEnabled) {
+                        this.rest = null;
+                        endpoint.rest[this.methods[this.selectedIndex]] = null;
+                    } else {
+                        endpoint.rest[this.methods[this.selectedIndex]] = {
+                            "statusCode": 200,
+                            "delay": 0,
+                            "response": "Hello world!",
+                            "contentType": "text/plain"
+                        };
+                        this.rest = endpoint.rest[this.methods[this.selectedIndex]];
+                    }
+                };
+
+                this.copy = function () {
+                    for (var i = 0; i < 4; i++) {
+                        if (this.rest != null && this.rest != undefined)
+                            endpoint.rest[this.methods[i]] = JSON.parse(JSON.stringify(this.rest));
+                        else
+                            endpoint.rest[this.methods[i]] = null;
+                    }
+                };
+
+                this.save = function (isOk) {
+                    if (isOk || !this.restEnabled) {
+                        ctrlE.update(endpoint);
+                        $mdDialog.hide();
+                    }
+                    else
+                        showMessage("alert-danger", "Invalid fields!");
+                };
+
+                //For cotent types
+                this.contentTypes = ["application/json", "text/plain", "application/javascript", "application/xml", "application/pdf", "application/octet-stream", "multipart/form-data", "text/html", "text/csv", "text/xml"];
+                this.querySearch = function (query) {
+                    return query ? ctrl.contentTypes.filter(createFilterFor(query)) : [];
+                }
+                function createFilterFor(query) {
+                    var lowercaseQuery = angular.lowercase(query);
+                    return function filterFn(state) {
+                        return (state.indexOf(lowercaseQuery) === 0);
+                    };
+                }
+            }],
+            controllerAs: 'ctrl',
+            templateUrl: '/templates/edit_endpoint.html'
+        });
+    };
+}]);
 
 
 app.controller('UserController', ['$cookieStore', '$http', '$rootScope', '$mdDialog', function ($cookieStore, $http, $rootScope, $mdDialog) {
+    var ctrl = this;
+
     try {
         $rootScope.token = $cookieStore.get('token');
-        if($rootScope.token==undefined) throw new Error();
+        if ($rootScope.token == undefined) throw new Error();
     } catch (ex) {
         $cookieStore.put('token', '0');
         $rootScope.token = $cookieStore.get('token');
@@ -303,13 +217,18 @@ app.controller('UserController', ['$cookieStore', '$http', '$rootScope', '$mdDia
 
     function tryAuth() {
         if ($rootScope.token != undefined && $rootScope.token != '0') {
-            $http.get('/api/users?token=' + $rootScope.token).success(function (data) {
+            $http.get('/api/users/sessions?token=' + $rootScope.token).success(function (data) {
                 $rootScope.user = data;
-                $rootScope.loggedIn = false;
-            }).error(function (data) {
+                ctrl.user = data;
                 $rootScope.loggedIn = true;
+            }).error(function (data) {
+                $rootScope.loggedIn = false;
+                if (window.location != '/#/')
+                    window.location.replace('/#/');
             });
         }
+        else if (window.location != '/#/')
+            window.location.replace('/#/');
     }
 
     tryAuth();
@@ -319,7 +238,7 @@ app.controller('UserController', ['$cookieStore', '$http', '$rootScope', '$mdDia
         $cookieStore.put('token', value);
     };
 
-    $rootScope.logout = function(){
+    $rootScope.logout = function () {
         $rootScope.loggedIn = false;
         $rootScope.user = [];
         putToken('0');
@@ -332,25 +251,25 @@ app.controller('UserController', ['$cookieStore', '$http', '$rootScope', '$mdDia
                 var ctrl = this;
 
                 this.loginObject = {
-                    username: "",
-                    password: ""
+                    //username: "",
+                    //password: ""
                 };
 
                 this.registerObject = {
-                    username: "",
-                    password: "",
-                    firstName: "",
-                    lastName: "",
-                    email: ""
+                    //username: "",
+                    //password: "",
+                    //firstName: "",
+                    //lastName: "",
+                    //email: ""
                 };
 
                 this.login = function () {
-                    $http.post('/api/login', ctrl.loginObject).
-                        success(function (data, status, headers, config) {
+                    $http.post('/api/users/sessions?username=' + this.loginObject.username + '&password=' + this.loginObject.password, 'shit')
+                        .success(function (data) {
+                            alert(data);
                             putToken(data);
                             location.reload();
-                        }).
-                        error(function (data, status, headers, config) {
+                        }).error(function (data) {
                             showMessage("alert-danger", "Login failed: " + data);
                             ctrl.loginObject = {
                                 username: "",
@@ -377,42 +296,7 @@ app.controller('UserController', ['$cookieStore', '$http', '$rootScope', '$mdDia
             targetEvent: ev
         });
     };
-
-
 }]);
-
-function LoginRegisterController() {
-    var loginObject = {
-        username: "",
-        password: ""
-    };
-
-    var registerObject = {
-        username: "",
-        password: "",
-        firstName: "",
-        lastName: "",
-        email: ""
-    };
-
-    var login = function () {
-        alert('ceva');
-    };
-
-    var register = function () {
-        $("#loading").show();
-        alert('ceva');
-        $http.post('/api/user', $rootScope.registerObject).
-            success(function (data, status, headers, config) {
-                location.reload();
-            }).
-            error(function (data, status, headers, config) {
-                showMessage("alert-danger", "Register failed: " + data);
-            }).then(function () {
-                $("#loading").hide();
-            });
-    };
-}
 
 app.directive('passwordMatch', [function () {
     return {

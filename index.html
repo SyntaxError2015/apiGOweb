@@ -23,11 +23,12 @@
 </head>
 
 <body class="body">
-<div layout="column" layout-fill>
+<div layout="column" layout-fill class="background">
     <md-toolbar ng-controller="UserController as user">
         <div class="md-toolbar-tools app-toolbar">
             <a href="/#/" id="logo">api<span class="orange">GO</span></a>
             <span flex></span>
+            <span ng-show="loggedIn">Welcome, {{user.user.username}}!</span>
             <md-button ng-hide="loggedIn" class="orange-background" ng-click="showLogin($event)">
                 Login / Register
             </md-button>

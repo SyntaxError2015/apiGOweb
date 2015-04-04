@@ -8,10 +8,19 @@
     font-weight: bold;
 }
 
+.background{
+    background-color: rgba(77, 89, 101, 1);
+}
+
 md-content.md-default-theme {
     background-color: rgba(77, 89, 101, 1);
     font-family: 'Ubuntu', sans-serif;
 }
+
+md-dialog > md-content.md-default-theme {
+    background-color: #ffffff;
+}
+
 
 .my-width{
     min-width: 350px;
@@ -34,7 +43,7 @@ md-content.md-default-theme {
     font-size: 24px;
 }
 
-.endpoints-layout hr {
+hr {
     margin-top: 5px;
     margin-bottom: 5px;
 }
@@ -54,6 +63,10 @@ md-content.md-default-theme {
     max-height: 280px;
     width: 400px;
     padding: 5px;
+}
+
+.edit-endpoint-dialog md-input-container{
+    padding-bottom: 0;
 }
 
 /* Tabs Color */
@@ -96,10 +109,15 @@ md-progress-circular.md-default-theme .md-inner .md-right .md-half-circle {
     z-index: 9000;
     width: auto;
     height: auto;
-    font-size: 24px;
-    right: 10px;
-    bottom: 10px;
-    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    /*right: 10px;*/
+    /*bottom: 10px;*/
+    top:10px;
+    left:50%;
+    margin-left: -100px;
+
+    padding: 5px;
+    font-family: 'Ubuntu', sans-serif;
 }
 
 /*effects*/

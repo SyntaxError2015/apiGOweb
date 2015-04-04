@@ -7,11 +7,11 @@
                     <form name="loginForm">
                         <md-input-container flex>
                             <label>Username</label>
-                            <input ng-model="ctrl.loginObject.username" placeholder="Username" required>
+                            <input name="username" ng-model="ctrl.loginObject.username" placeholder="Username" required>
                         </md-input-container>
                         <md-input-container flex>
                             <label>Password</label>
-                            <input type="password" ng-model="ctrl.loginObject.password" placeholder="Password" required>
+                            <input name="password" type="password" ng-model="ctrl.loginObject.password" placeholder="Password" required>
                         </md-input-container>
                     </form>
                 </md-tab-template>
@@ -52,12 +52,12 @@
 
                             <md-input-container flex>
                                 <label>Repeat Password</label>
-                                <input name="repeatPassword" type="password" ng-model="repeatPassword"
-                                       placeholder="Repeat Password" password-match="loginObject.password"
+                                <input name="repeatPassword" type="password" ng-model="passAgain"
+                                       placeholder="Repeat Password" password-match="ctrl.registerObject.password"
                                        required/>
 
                                 <div ng-messages="registerForm.repeatPassword.$invalid">
-                                    <div ng-show="registerForm.repeatPassword.$invalid" ng-message="match">Passwords
+                                    <div ng-show="registerForm.repeatPassword.$invalid">Passwords
                                         don't
                                         match.
                                     </div>
