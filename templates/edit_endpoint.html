@@ -28,7 +28,7 @@
 <md-dialog class="edit-endpoint-dialog">
 
     <div style="overflow-y: auto;">
-        <form name="endpointForm">
+        <form name="endpointForm" autocomplete="off">
 
         <span class="endpoint-title">Edit endpoint</span>
         <hr>
@@ -48,12 +48,12 @@
 
                 <div layout="row">
                     <md-input-container flex style="padding-bottom: 0;">
-                        <label>Username</label>
-                        <input ng-model="ctrl.endpoint.username" placeholder="Username" autocomplete="off">
+                        <label>End Username</label>
+                        <input name="uniqU" ng-model="ctrl.endpoint.authentication.username" placeholder="End Username" autocomplete="off">
                     </md-input-container>
                     <md-input-container flex style="padding-bottom: 0;">
-                        <label>Password</label>
-                        <input type="password" ng-model="ctrl.endpoint.password" placeholder="Password" autocomplete="off">
+                        <label> End Password</label>
+                        <input name ="uniqP" type="password" ng-model="ctrl.endpoint.authentication.password" placeholder="End Password" autocomplete="off">
                     </md-input-container>
                 </div>
             </div>

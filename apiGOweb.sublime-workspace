@@ -11,7 +11,7 @@
 			"file": "index.html",
 			"settings":
 			{
-				"buffer_size": 1761,
+				"buffer_size": 1941,
 				"line_ending": "Unix"
 			}
 		},
@@ -19,15 +19,31 @@
 			"file": "css/site.css",
 			"settings":
 			{
-				"buffer_size": 263,
+				"buffer_size": 506,
 				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/media/nbi/Kituri/WINDOWS 10/WAMP/www/css/site.css",
+			"settings":
+			{
+				"buffer_size": 6352,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/media/nbi/Kituri/WINDOWS 10/WAMP/www/shared/userlogin.php",
+			"settings":
+			{
+				"buffer_size": 5799,
+				"line_ending": "Windows"
 			}
 		},
 		{
 			"file": "js/app.js",
 			"settings":
 			{
-				"buffer_size": 3660,
+				"buffer_size": 5393,
 				"line_ending": "Windows"
 			}
 		}
@@ -72,10 +88,10 @@
 	},
 	"file_history":
 	[
+		"/media/nbi/Kituri/WINDOWS 10/WAMP/www/Index.php",
 		"/var/www/apiGOweb/js/angular.min.js",
 		"/media/nbi/Kituri/WINDOWS 10/WAMP/www/Models/user.class.php",
 		"/media/nbi/Kituri/WINDOWS 10/WAMP/www/Pages/Index.php",
-		"/media/nbi/Kituri/WINDOWS 10/WAMP/www/Index.php",
 		"/home/nbi/.config/sublime-text-2/Packages/Default/Default (Linux).sublime-keymap",
 		"/home/nbi/.config/sublime-text-2/Packages/Default/Preferences.sublime-settings",
 		"/home/nbi/.config/sublime-text-2/Packages/User/Preferences.sublime-settings",
@@ -122,7 +138,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 3,
 			"sheets":
 			[
 				{
@@ -130,15 +146,15 @@
 					"file": "index.html",
 					"settings":
 					{
-						"buffer_size": 1761,
+						"buffer_size": 1941,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								302,
-								302
+								0,
+								0
 							]
 						],
 						"settings":
@@ -158,41 +174,99 @@
 					"file": "css/site.css",
 					"settings":
 					{
-						"buffer_size": 263,
+						"buffer_size": 506,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								20,
-								20
+								225,
+								225
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/CSS/CSS.tmLanguage"
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 187.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "js/app.js",
+					"file": "/media/nbi/Kituri/WINDOWS 10/WAMP/www/css/site.css",
 					"settings":
 					{
-						"buffer_size": 3660,
+						"buffer_size": 6352,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								103,
-								103
+								5688,
+								5688
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 5508.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/media/nbi/Kituri/WINDOWS 10/WAMP/www/shared/userlogin.php",
+					"settings":
+					{
+						"buffer_size": 5799,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1581.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "js/app.js",
+					"settings":
+					{
+						"buffer_size": 5393,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
 							]
 						],
 						"settings":

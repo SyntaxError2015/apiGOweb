@@ -1,11 +1,25 @@
 <md-toolbar class="md-theme-light">
     <h2 class="md-toolbar-tools">
-        <span>History for {{HistoryCtrl.paramId}} endpoint</span>
+        <span>Your endpoints</span>
+
+        <!--<div flex></div>-->
+        <!--<md-button aria-label="Add endpoint" style="font-size: 24px;" ng-click="EndpointCtrl.create()">-->
+            <!--Add endpoint-->
+        <!--</md-button>-->
     </h2>
 </md-toolbar>
-<md-content >
+<md-content>
 
-sdgh
+    <md-list>
+        <md-item class="md-3-line" ng-repeat="item in messages">
+            <div class="md-item-text">
+                <h3>{{item.what}}</h3>
+                <h4>{{item.who}}</h4>
+                <p>{{item.notes}}</p>
+            </div>
+            <md-divider ng-if="!$last"></md-divider>
+        </md-item>
+    </md-list>
 
 
 </md-content>

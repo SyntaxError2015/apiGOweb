@@ -95,7 +95,7 @@ app.controller('EndpointController', ['$http', '$mdDialog', '$rootScope', functi
     };
 
     this.update = function (endpoint) {
-        alert(JSON.stringify(endpoint));
+        //alert(JSON.stringify(endpoint));
         $http.put('/api/endpoints?token=' + $rootScope.token, endpoint).success(function (data) {
             showMessage("alert-success", "Endpoint modified!");
             ctrlE.endpoints[ctrlE.endpoints.indexOf(endpoint)] = data;
@@ -263,21 +263,7 @@ app.controller('UserController', ['$cookieStore', '$http', '$rootScope', '$mdDia
                     //email: ""
                 };
 
-                this.login = function () {
-                    $http.post('/api/users/sessions?username=' + this.loginObject.username + '&password=' + this.loginObject.password, 'shit')
-                        .success(function (data) {
-                            alert(data);
-                            putToken(data);
-                            location.reload();
-                        }).error(function (data) {
-                            showMessage("alert-danger", "Login failed: " + data);
-                            ctrl.loginObject = {
-                                username: "",
-                                password: ""
-                            };
-                            $("#loading").hide();
-                        });
-                };
+
 
                 this.register = function () {
                     $("#loading").show();
@@ -287,6 +273,24 @@ app.controller('UserController', ['$cookieStore', '$http', '$rootScope', '$mdDia
                         }).
                         error(function (data, status, headers, config) {
                             showMessage("alert-danger", "Register failed: " + data);
+                            $("#loading").hide();
+                        });
+                };
+
+                this.login = function () {
+                    $("#loading").show();
+                    $http.post('/api/users/sessions?username=' + this.loginObject.username + '&password=' + this.loginObject.password, 'fgdfg').
+                        success(function (data) {
+                            //alert(data);
+                            putToken(data);
+                            location.reload();
+                        }).
+                        error(function (data) {
+                            showMessage("alert-danger", "Login failed: " + data);
+                            ctrl.loginObject = {
+                                username: "",
+                                password: ""
+                            };
                             $("#loading").hide();
                         });
                 };
