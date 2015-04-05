@@ -1,0 +1,115 @@
+<style>
+    md-list {
+        font-family: 'Ubuntu', sans-serif;
+        font-size: 16px;
+        color: #ffffff;
+    }
+
+    .title {
+        font-size: 26px;
+        /*font-weight: bold;*/
+    }
+
+    hr {
+        /*color:white;*/
+        /*border-color:white;*/
+        /*background-color: #ffffff;*/
+        color: rgb(63, 88, 99);
+        background-color: rgb(63, 88, 99);
+        border-color: rgb(63, 88, 99);
+    }
+
+    md-divider {
+        color: white;
+        border-color: white;
+        background-color: #ffffff;
+    }
+
+    md-whiteframe {
+        background-color: #ffffff;
+        margin: 10px;
+        font-family: 'Ubuntu', sans-serif;
+        font-size: 16px;
+        min-height: 100px;
+        padding: 7px;
+        color: rgb(63, 88, 99);
+    }
+
+    table {
+        color: rgb(63, 88, 99);
+        width: 100%;
+    }
+    table tr{
+        border-bottom: solid rgb(63, 88, 99) 1px;
+    }
+
+    .row-title {
+        font-size: 18px;
+        /*font-weight: bold;*/
+        padding-right: 20px;
+        min-width: 200px;
+    }
+</style>
+
+<md-toolbar class="md-theme-light">
+    <h2 class="md-toolbar-tools">
+
+
+        <span class="TITLE">History for /{{HistoryCtrl.endpointId}}</span>
+        <div flex></div>
+        <md-input-container class="orange" style="margin-bottom: -10px;">
+            <label>Search in your history</label>
+            <input type="text" ng-model="searchText">
+        </md-input-container>
+        <!--<div flex></div>-->
+        <!--<md-button aria-label="Add endpoint" style="font-size: 24px;" ng-click="EndpointCtrl.create()">-->
+        <!--Add endpoint-->
+        <!--</md-button>-->
+    </h2>
+</md-toolbar>
+
+
+<div layout="column">
+
+    <md-whiteframe class="md-whiteframe-z2" ng-repeat="item in HistoryCtrl.history | filter:searchText | orderBy:'-time'">
+        <span class="title">{{item.requestDate}} | Method: {{item.httpMethod}}</span>
+        <hr>
+        <table>
+            <tr>
+                <td class="row-title">Request Headers</td>
+                <!--<td>{{item.header}}</td>-->
+                <td><span ng-repeat="(key,value) in item.header"><b>{{key}}</b>:{{value[0]}}<br> </span>
+
+                </td>
+            </tr>
+            <tr>
+                <td class="row-title">Request Parameters</td>
+                <!--<td>{{item.parameters}}</td>-->
+                <td><span ng-repeat="(key,value) in item.parameters"><b>{{key}}</b>:{{value[0]}}<br> </span></td>
+
+            </tr>
+            <tr>
+                <td class="row-title">Request Body</td>
+                <td>{{item.body}}</td>
+            </tr>
+            <tr>
+                <td class="row-title">Response Code</td>
+                <td>{{item.responseStatusCode}}</td>
+            </tr>
+            <tr>
+                <td class="row-title">Response Content-Type</td>
+                <td>{{item.responseContentType}}</td>
+            </tr>
+            <tr>
+                <td class="row-title">Response Body</td>
+                <td>{{item.responseMessage}}</td>
+            </tr>
+        </table>
+    </md-whiteframe>
+
+</div>
+
+
+<!--<center>-->
+<!--<md-progress-circular md-diameter="45" md-mode="indeterminate"></md-progress-circular>-->
+<!--</center>-->

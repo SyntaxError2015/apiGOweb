@@ -1,0 +1,140 @@
+<style>
+    .edit-endpoint-dialog md-input-container {
+        padding-bottom: 25px;
+    }
+
+    .no-padding {
+        padding-bottom: 0;
+    }
+
+    .edit-endpoint-dialog {
+        padding: 10px;
+        width: 450px;
+        /*height: 500px;*/
+        height: auto;
+        max-height: 90%;
+        /*overflow: scroll;*/
+    }
+
+    .md-tabs-content {
+        display: none;
+    }
+
+    md-checkbox {
+        margin: 0;
+    }
+</style>
+
+<md-dialog class="edit-endpoint-dialog">
+
+    <div style="overflow-y: auto;">
+        <form name="endpointForm" autocomplete="off">
+
+            <span class="endpoint-title">Edit endpoint</span>
+            <hr>
+
+
+            <div>
+                <div layout="row">
+                    <md-input-container style="padding-bottom: 0;" flex>
+                        <label>Url path</label>
+                        <input ng-model="ctrl.endpoint['urlPath']" disabled>
+                    </md-input-container>
+                    <md-input-container flex style="padding-bottom: 0;">
+                        <label>Name</label>
+                        <input ng-model="ctrl.endpoint.name" placeholder="Name">
+                    </md-input-container>
+                </div>
+
+                <div layout="row">
+                    <md-input-container flex style="padding-bottom: 0;">
+                        <label>End Username</label>
+                        <input name="uniqU" ng-model="ctrl.endpoint.authentication.username" placeholder="End Username"
+                               autocomplete="off">
+                    </md-input-container>
+                    <md-input-container flex style="padding-bottom: 0;">
+                        <label> End Password</label>
+                        <input name="uniqP" type="password" ng-model="ctrl.endpoint.authentication.password"
+                               placeholder="End Password" autocomplete="off">
+                    </md-input-container>
+                </div>
+            </div>
+
+            <md-tabs md-selected="ctrl.selectedIndex" ng-click="ctrl.change(endpointForm.$valid)">
+                <md-tab id="tab1">
+                    <md-tab-label>GET</md-tab-label>
+                </md-tab>
+                <md-tab id="tab2">
+                    <md-tab-label>POST</md-tab-label>
+                </md-tab>
+                <md-tab id="tab3">
+                    <md-tab-label>PUT</md-tab-label>
+                </md-tab>
+                <md-tab id="tab4">
+                    <md-tab-label>DELETE</md-tab-label>
+                </md-tab>
+            </md-tabs>
+
+            <div layout="row">
+                <md-button ng-click="ctrl.copy()">Copy to all methods</md-button>
+                <md-checkbox ng-model="ctrl.restEnabled" aria-label="Enabled" class="md-warn"
+                             ng-click="ctrl.toggleRest()">
+                    Enabled
+                </md-checkbox>
+
+            </div>
+            <div ng-show="ctrl.restEnabled">
+                <md-autocomplete
+                        ng-disabled="!ctrl.restEnabled"
+                        md-selected-item="ctrl.rest.contentType"
+                        ng-model="ctrl.rest.contentType"
+                        md-search-text="ctrl.rest.contentType"
+                        md-items="item in ctrl.querySearch(ctrl.rest.contentType)"
+                        md-item-text="item"
+                        placeholder="ContentType">
+                    <span md-highlight-text="ctrl.rest.contentType" md-highlight-flags="^i">{{item}}</span>
+                </md-autocomplete>
+            </div>
+            <div layout="row" ng-show="ctrl.restEnabled">
+
+                <md-input-container flex>
+                    <label>Response Code</label>
+                    <input ng-disabled="!ctrl.restEnabled" name="statusCode" min="100" max="599" type="number"
+                           ng-model="ctrl.rest.statusCode" required/>
+
+                    <div ng-messages="endpointForm.statusCode.$error">
+                        <div ng-hide="!endpointForm.statusCode.$error" ng-message="md-maxlength">Between 100 and 599
+                        </div>
+                    </div>
+                </md-input-container>
+                <md-input-container flex>
+                    <label>Delay (ms)</label>
+                    <input name="delay" type="number" ng-model="ctrl.rest.delay" placeholder="Delay (ms)" min="0"
+                           required ng-disabled="!ctrl.restEnabled">
+                </md-input-container>
+            </div>
+            <div layout="column" ng-show="ctrl.restEnabled">
+                <md-input-container flex style="padding-bottom: 0;">
+                    <label>Response body</label>
+                    <textarea ng-disabled="!ctrl.restEnabled" ng-model="ctrl.rest.response" md-minlength="1"
+                              required></textarea>
+                </md-input-container>
+
+                <md-input-container flex style="padding-bottom: 0;">
+                    <label>Code to execute</label>
+                    <textarea ng-disabled="!ctrl.restEnabled" ng-model="ctrl.rest.sourceCode"></textarea>
+                </md-input-container>
+            </div>
+        </form>
+
+    </div>
+    <div class="md-actions" layout="row">
+
+        <span flex></span>
+        <md-button ng-disabled="!endpointForm.$valid && ctrl.restEnabled" class="md-raised md-primary"
+                   ng-click="ctrl.save(endpointForm.$valid)" valid>
+            Save
+        </md-button>
+    </div>
+
+</md-dialog>

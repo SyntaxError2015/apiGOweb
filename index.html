@@ -3,8 +3,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
     <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/site.css"/>
     <link rel="stylesheet" href="/bower_components/angular-material/angular-material.css">
+    <link rel="stylesheet" href="/css/site.css"/>
 
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,500&subset=latin,latin-ext' rel='stylesheet'
@@ -19,35 +19,38 @@
     <script src="/bower_components/angular-aria/angular-aria.js"></script>
     <script src="/bower_components/angular-animate/angular-animate.js"></script>
     <script src="/bower_components/angular-material/angular-material.js"></script>
+    <script src="/js/angular-route.min.js"></script>
 </head>
 
-<body>
-<div layout="column" layout-fill>
-    <md-toolbar>
+<body class="body">
+<div layout="column" layout-fill class="background">
+    <md-toolbar ng-controller="UserController as user">
         <div class="md-toolbar-tools app-toolbar">
-            <span id="logo">api<span class="orange">GO</span></span>
-            <!-- fill up the space between left and right area -->
+            <a href="/#/" id="logo">api<span class="orange">GO</span></a>
             <span flex></span>
-            <md-button class="orange-background">
-                Right Bar Button
+            <span ng-show="loggedIn">Welcome, {{user.user.username}}!</span>
+            <span flex="5"></span>
+            <md-button ng-hide="loggedIn" class="orange-background" ng-click="showLogin($event)">
+                Login / Register
+            </md-button>
+            <md-button ng-show="loggedIn" href="/#/endpoints">
+                My endpoints
+            </md-button>
+            <span flex="5"></span>
+            <md-button class="md-warn" ng-show="loggedIn" ng-click="logout()">
+                Logout
             </md-button>
         </div>
     </md-toolbar>
-    <md-content>
-        Hello!<br>
-
-        <h3 ng-init="asa = 'test'">{{asa}}</h3>
-
-        <div ng-controller="UserController as c">
-            <input type="text" ng-model="c.userKey"/>
-            <span ng-bind="c.userKey"></span>
-            <md-button class="md-raised" ng-click="c.save()">save</md-button>
-        </div>
-
-        <h3>{{user}}</h3>
+    <md-content class="content">
+        <div ng-view></div>
     </md-content>
 </div>
 
+
+<!--message and loading-->
+<div id="message" class="alert"></div>
+<div id="loading" class="loading"></div>
 
 </body>
 

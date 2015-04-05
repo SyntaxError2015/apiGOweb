@@ -1,0 +1,50 @@
+<md-toolbar class="md-theme-light">
+    <h2 class="md-toolbar-tools">
+        <!--<span>Your endpoints</span>-->
+        <md-input-container class="orange" style="margin-bottom: -10px;">
+            <label>Search in your endpoints</label>
+            <input type="text"  ng-model="searchText">
+        </md-input-container>
+        <div flex></div>
+        <md-button aria-label="Add endpoint" style="font-size: 24px;" ng-click="EndpointCtrl.create()">
+            Add endpoint
+        </md-button>
+    </h2>
+</md-toolbar>
+<md-content>
+
+    <div class="endpoints-layout" layout="row" layout-margin layout-padding layout-wrap>
+
+        <div flex class="my-width" ng-repeat="endpoint in EndpointCtrl.endpoints | filter:searchText ">
+            <!--| orderBy: 'name'-->
+            <div layout="row" class="endpoint-title">{{endpoint.name}}
+                <div flex></div>
+                <md-switch ng-model="endpoint.enabled" aria-label="On" ng-change="EndpointCtrl.update(endpoint)">
+                </md-switch>
+            </div>
+            <hr>
+            <b>Endpoint link</b><br/>
+            <a href="/api{{endpoint.urlPath}}" target="_blank">http://localhost/api{{endpoint.urlPath}}</a><br/>
+            <!--<br/>-->
+            <!--<b ng-if="endpoint.description">Description</b><br/>-->
+            <!--<span ng-bind="endpoint.description | limitTo:90"></span>-->
+            <br/>
+            <b>Endpoint Access History</b><br/>
+            <a href="/#/history{{endpoint.urlPath}}">http://localhost/#/history{{endpoint.urlPath}}</a><br/>
+            <hr>
+
+            <div layout="row">
+                <md-button class="md-raised md-warn" ng-click="EndpointCtrl.delete(endpoint)">Delete</md-button>
+                <div flex></div>
+                <md-button class="md-raised" ng-click="EndpointCtrl.edit(endpoint)">Edit</md-button>
+            </div>
+        </div>
+
+    </div>
+
+
+</md-content>
+
+<!--<center>-->
+    <!--<md-progress-circular md-diameter="45" md-mode="indeterminate"></md-progress-circular>-->
+<!--</center>-->

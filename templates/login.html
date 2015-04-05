@@ -1,0 +1,82 @@
+<md-dialog class="register-dialog">
+    <div class="dialog-content">
+        <md-tabs md-selected="selectedIndex">
+            <md-tab id="tab1">
+                <md-tab-label>Login</md-tab-label>
+                <md-tab-template>
+                    <form name="loginForm">
+                        <md-input-container flex>
+                            <label>Username</label>
+                            <input name="username" ng-model="ctrl.loginObject.username" placeholder="Username" required>
+                        </md-input-container>
+                        <md-input-container flex>
+                            <label>Password</label>
+                            <input name="password" type="password" ng-model="ctrl.loginObject.password" placeholder="Password" required>
+                        </md-input-container>
+                    </form>
+                </md-tab-template>
+            </md-tab>
+
+            <md-tab id="tab2">
+                <md-tab-label>Register</md-tab-label>
+                <md-tab-template>
+                    <form name="registerForm">
+                        <div layout layout-sm="column">
+                            <md-input-container flex>
+                                <label>Username</label>
+                                <input name="username" md-minlength="4" md-maxlength="16"
+                                       ng-model="ctrl.registerObject.username"
+                                       placeholder="Username" required/>
+
+                                <div ng-messages="registerForm.username.$error">
+                                    <div ng-message="md-maxlength">Maximum 16 characters.</div>
+                                </div>
+                            </md-input-container>
+                            <md-input-container flex>
+                                <label>Email</label>
+                                <input name="email" type="email" ng-model="ctrl.registerObject.email" placeholder="Email"
+                                       required>
+                            </md-input-container>
+                        </div>
+
+                        <div layout layout-sm="column">
+                            <md-input-container flex>
+                                <label>Password</label>
+                                <input name="password" md-minlength="4" md-maxlength="16" type="password"
+                                       ng-model="ctrl.registerObject.password" placeholder="Password" required/>
+
+                                <div ng-messages="registerForm.password.$invalid">
+                                    <div ng-message="md-maxlength">Maximum 16 characters.</div>
+                                </div>
+                            </md-input-container>
+
+                            <md-input-container flex>
+                                <label>Repeat Password</label>
+                                <input name="repeatPassword" type="password" ng-model="passAgain"
+                                       placeholder="Repeat Password" password-match="ctrl.registerObject.password"
+                                       required/>
+
+                                <div ng-messages="registerForm.repeatPassword.$invalid">
+                                    <div ng-show="registerForm.repeatPassword.$invalid">Passwords
+                                        don't
+                                        match.
+                                    </div>
+                                </div>
+                            </md-input-container>
+                        </div>
+                    </form>
+                </md-tab-template>
+            </md-tab>
+        </md-tabs>
+    </div>
+    <div class="md-actions" layout="row">
+
+        <span flex></span>
+        <md-button ng-click="ctrl.login()" ng-show="selectedIndex==0">
+            Login
+        </md-button>
+        <md-button ng-click="ctrl.register()" ng-show="selectedIndex==1">
+            Register
+        </md-button>
+    </div>
+</md-dialog>
