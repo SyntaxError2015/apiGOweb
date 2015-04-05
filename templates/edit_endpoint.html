@@ -30,8 +30,8 @@
     <div style="overflow-y: auto;">
         <form name="endpointForm" autocomplete="off">
 
-        <span class="endpoint-title">Edit endpoint</span>
-        <hr>
+            <span class="endpoint-title">Edit endpoint</span>
+            <hr>
 
 
             <div>
@@ -49,11 +49,13 @@
                 <div layout="row">
                     <md-input-container flex style="padding-bottom: 0;">
                         <label>End Username</label>
-                        <input name="uniqU" ng-model="ctrl.endpoint.authentication.username" placeholder="End Username" autocomplete="off">
+                        <input name="uniqU" ng-model="ctrl.endpoint.authentication.username" placeholder="End Username"
+                               autocomplete="off">
                     </md-input-container>
                     <md-input-container flex style="padding-bottom: 0;">
                         <label> End Password</label>
-                        <input name ="uniqP" type="password" ng-model="ctrl.endpoint.authentication.password" placeholder="End Password" autocomplete="off">
+                        <input name="uniqP" type="password" ng-model="ctrl.endpoint.authentication.password"
+                               placeholder="End Password" autocomplete="off">
                     </md-input-container>
                 </div>
             </div>
@@ -82,16 +84,16 @@
 
             </div>
             <div ng-show="ctrl.restEnabled">
-            <md-autocomplete
-                    ng-disabled="!ctrl.restEnabled"
-                    md-selected-item="ctrl.rest.contentType"
-                    ng-model="ctrl.rest.contentType"
-                    md-search-text="ctrl.rest.contentType"
-                    md-items="item in ctrl.querySearch(ctrl.rest.contentType)"
-                    md-item-text="item"
-                    placeholder="ContentType">
-                <span md-highlight-text="ctrl.rest.contentType" md-highlight-flags="^i">{{item}}</span>
-            </md-autocomplete>
+                <md-autocomplete
+                        ng-disabled="!ctrl.restEnabled"
+                        md-selected-item="ctrl.rest.contentType"
+                        ng-model="ctrl.rest.contentType"
+                        md-search-text="ctrl.rest.contentType"
+                        md-items="item in ctrl.querySearch(ctrl.rest.contentType)"
+                        md-item-text="item"
+                        placeholder="ContentType">
+                    <span md-highlight-text="ctrl.rest.contentType" md-highlight-flags="^i">{{item}}</span>
+                </md-autocomplete>
             </div>
             <div layout="row" ng-show="ctrl.restEnabled">
 
@@ -112,14 +114,16 @@
                 </md-input-container>
             </div>
             <div layout="column" ng-show="ctrl.restEnabled">
-            <md-input-container flex style="padding-bottom: 0;">
-                <label>Response body</label>
-                <textarea ng-disabled="!ctrl.restEnabled" ng-model="ctrl.rest.response" md-minlength="1" required></textarea>
-            </md-input-container>
-            <!--<md-input-container flex style="padding-bottom: 0;">-->
-            <!--<label>Code to execute</label>-->
-            <!--<textarea ng-disabled="!ctrl.restEnabled" ng-model="ctrl.rest.code"></textarea>-->
-            <!--</md-input-container>-->
+                <md-input-container flex style="padding-bottom: 0;">
+                    <label>Response body</label>
+                    <textarea ng-disabled="!ctrl.restEnabled" ng-model="ctrl.rest.response" md-minlength="1"
+                              required></textarea>
+                </md-input-container>
+
+                <md-input-container flex style="padding-bottom: 0;">
+                    <label>Code to execute</label>
+                    <textarea ng-disabled="!ctrl.restEnabled" ng-model="ctrl.rest.sourceCode"></textarea>
+                </md-input-container>
             </div>
         </form>
 
@@ -127,7 +131,8 @@
     <div class="md-actions" layout="row">
 
         <span flex></span>
-        <md-button ng-disabled="!endpointForm.$valid && ctrl.restEnabled" class="md-raised md-primary" ng-click="ctrl.save(endpointForm.$valid)" valid>
+        <md-button ng-disabled="!endpointForm.$valid && ctrl.restEnabled" class="md-raised md-primary"
+                   ng-click="ctrl.save(endpointForm.$valid)" valid>
             Save
         </md-button>
     </div>

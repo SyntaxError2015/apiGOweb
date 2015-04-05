@@ -1,12 +1,26 @@
-Hello!<br>
+<style>
+    #name-description{
+        left:5%;
+        bottom:20%;
+        position: fixed;
+        z-index: 2;
+        font-family: 'Ubuntu', sans-serif;
+        color: #ffffff;
+    }
 
-<h3 ng-init="asa = 'test'">{{asa}}</h3>
+    #name-description .title{
+        font-size: 164px;
+        font-weight: bolder;
+    }
 
-<!--<div ng-controller="UserController as c">-->
-    <!--<input type="text" ng-model="c.userKey"/>-->
-    <!--<span ng-bind="c.userKey"></span>-->
-    <!--<md-button class="md-raised" ng-click="c.save()">save</md-button>-->
-<!--</div>-->
+    #name-description .description{
+        font-size: 48px;
+    }
 
-<h3>{{user}}</h3>
-<h3>{{user}}</h3>
+
+</style>
+
+<div id="name-description">
+    <span class="title">api<span class="orange" >GO</span></span><br>
+    <span class="description">Taking tests to the e<span class="orange" >X</span>treme!</span>
+</div>

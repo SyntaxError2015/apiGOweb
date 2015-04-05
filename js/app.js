@@ -28,29 +28,28 @@ function addDays(date, days) {
 }
 
 app.controller('HistoryController', ['$http', '$rootScope', '$routeParams', function ($http, $rootScope, $routeParams) {
-
+    var ctrl = this;
     if (!$rootScope.loggedIn) {
         if (window.location != '/#/')
             window.location.replace('/#/');
     }
+    this.endpointId = $routeParams.id;
 
-    this.history = [
-        {
-            id: '',
-            time: '',
-            header: '',
-            parameters: [{
-                key: '',
-                value: ''
-            }],
-            body: '',
-            responseStatusCode: '',
-            responseMessage: '',
-            responseType: '',
-            responseBody: ''
+    this.history = [];
+
+    $http.get('/api/history?token=' + $rootScope.token + '&endpointPath=/'+ this.endpointId).success(function (data) {
+        ctrl.history = data;
+        for(i in ctrl.history){
+            ctrl.history[i].time = Date.parse(ctrl.history[i].requestDate);
+            ctrl.history[i].requestDate = new Date(ctrl.history[i].time).toString();
+            //alert(JSON.stringify(ctrl.history[i].parameters));
         }
-    ];
-    this.paramId = $routeParams.id;
+        //alert(JSON.stringify(ctrl.endpoints));
+    }).error(function (data) {
+        showMessage("alert-danger", "History failed to load!");
+    });
+
+
 }]);
 
 app.controller('EndpointController', ['$http', '$mdDialog', '$rootScope', function ($http, $mdDialog, $rootScope) {
@@ -250,19 +249,9 @@ app.controller('UserController', ['$cookieStore', '$http', '$rootScope', '$mdDia
             controller: ['$http', function ($http) {
                 var ctrl = this;
 
-                this.loginObject = {
-                    //username: "",
-                    //password: ""
-                };
+                this.loginObject = {};
 
-                this.registerObject = {
-                    //username: "",
-                    //password: "",
-                    //firstName: "",
-                    //lastName: "",
-                    //email: ""
-                };
-
+                this.registerObject = {};
 
 
                 this.register = function () {
@@ -327,78 +316,6 @@ app.directive('passwordMatch', [function () {
     };
 }]);
 
-// app.directive('newEpisodes', function () {
-//     return {
-//         restrict: 'E',
-//         templateUrl: '/Views/new-episodes.html',
-//         controller: ['$http', function ($http) {
-//             var ctrl = this;
-
-//             this.loadMore = function () {
-//                 //make the div bigger
-//                 var ep = $(".ep");
-//                 var addHeight = ep.height() + 2 * parseInt(ep.css('padding-bottom'));
-//                 $("#eps").height($("#eps").height() + addHeight);
-
-//                 $http.get('/API/EpisodeAPI.php?get=firstPageEpisodes&start=' + this.start + '&number=' + (this.getNrEpsPerRow())).success(function (data) {
-//                     ctrl.episodes = ctrl.episodes.concat(data);
-//                     ctrl.start += ctrl.getNrEpsPerRow()
-//                 });
-//             };
-
-//             this.getNrEpsPerRow = function () {
-//                 var screenWidth = $('#eps').width();
-//                 if (screenWidth > 1700) return 5;
-//                 if (screenWidth >= 1200) return 4;
-//                 if (screenWidth >= 992) return 3;
-//                 return 2;
-//             };
-
-//             $http.get('/API/EpisodeAPI.php?get=firstPageEpisodes&start=1&number=' + (this.getNrEpsPerRow() * 2)).success(function (data) {
-//                 ctrl.episodes = data;
-//             });
-
-//             this.start = this.getNrEpsPerRow() * 2 + 1;
-//         }],
-//         controllerAs: 'epCtrl'
-//     };
-// });
-
-// app.directive('episodesList', function () {
-//     return {
-//         restrict: 'E',
-//         templateUrl: '/Views/episodes-list.html',
-//         scope: {
-//             animeid: '=animeid'
-//         },
-//         controller: ['$scope', '$http', function ($scope, $http) {
-//             var ctrl = this;
-//             this.text = $scope.animeid;
-//             $http.get('/API/EpisodeAPI.php?get=episodesForAnime&id=' + $scope.animeid).success(function (data) {
-//                 ctrl.episodes = data;
-//             });
-//         }],
-//         controllerAs: 'epCtrl'
-//     }
-// });
-
-// app.directive('anime', function () {
-//     return {
-//         restrict: 'E',
-//         templateUrl: '/Views/anime.html',
-//         scope: {
-//             animeid: '=animeid'
-//         },
-//         controller: ['$scope', '$http', function ($scope, $http) {
-//             var ctrl = this;
-
-//             $http.get('/API/AnimeAPI.php?get=anime&id=' + $scope.animeid).success(function (data) {
-//                 ctrl.anime = data;
-//             });
-//         }],
-//         controllerAs: 'animeCtrl'
-//     }
-// });
 
 
 app.directive('tooltip', function () {

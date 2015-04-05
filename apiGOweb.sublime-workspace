@@ -8,43 +8,15 @@
 	"buffers":
 	[
 		{
-			"file": "index.html",
+			"contents": "#!/usr/bin/python\n\nimport sys\n\n\nglobal parameters \nparameters = {}\n\nglobal statusCode\nstatusCode = 200\nglobal response \nresponse = \"\"\n\ninParams = eval(sys.argv[2])\n#inParams = eval(\"{'nume':['gheorghe']}\")\n\nfor p in inParams:\n    parameters[p] = inParams[p][0]\n\n#print parameters['nume']\n\n#d = dict(locals(), **globals())\n\nexec(sys.argv[1])\n\nprint statusCode\nprint response\n\n\n#python script.py \"if(parameters['nume']=='nbi'):statusCode=400;response=parameters['resp']\" \"{'nume':['nbi'],'resp':['Hello world!']}\"\n",
+			"file": "/home/nbi/Desktop/script.py",
+			"file_size": 512,
+			"file_write_time": 1428203713000000,
 			"settings":
 			{
-				"buffer_size": 1941,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "css/site.css",
-			"settings":
-			{
-				"buffer_size": 506,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/media/nbi/Kituri/WINDOWS 10/WAMP/www/css/site.css",
-			"settings":
-			{
-				"buffer_size": 6352,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/media/nbi/Kituri/WINDOWS 10/WAMP/www/shared/userlogin.php",
-			"settings":
-			{
-				"buffer_size": 5799,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "js/app.js",
-			"settings":
-			{
-				"buffer_size": 5393,
-				"line_ending": "Windows"
+				"buffer_size": 512,
+				"line_ending": "Unix",
+				"name": "#!/usr/bin/python"
 			}
 		}
 	],
@@ -88,6 +60,11 @@
 	},
 	"file_history":
 	[
+		"/var/www/apiGOweb/js/app.js",
+		"/media/nbi/Kituri/WINDOWS 10/WAMP/www/shared/userlogin.php",
+		"/media/nbi/Kituri/WINDOWS 10/WAMP/www/css/site.css",
+		"/var/www/apiGOweb/css/site.css",
+		"/var/www/apiGOweb/index.html",
 		"/media/nbi/Kituri/WINDOWS 10/WAMP/www/Index.php",
 		"/var/www/apiGOweb/js/angular.min.js",
 		"/media/nbi/Kituri/WINDOWS 10/WAMP/www/Models/user.class.php",
@@ -117,6 +94,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"inParams",
 			"rootScope",
 			"key",
 			"javascript",
@@ -138,144 +116,33 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "index.html",
+					"file": "/home/nbi/Desktop/script.py",
 					"settings":
 					{
-						"buffer_size": 1941,
+						"buffer_size": 512,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								467,
+								467
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"auto_name": "#!/usr/bin/python",
+							"syntax": "Packages/Python/Python.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "css/site.css",
-					"settings":
-					{
-						"buffer_size": 506,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								225,
-								225
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CSS/CSS.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 187.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "/media/nbi/Kituri/WINDOWS 10/WAMP/www/css/site.css",
-					"settings":
-					{
-						"buffer_size": 6352,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								5688,
-								5688
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CSS/CSS.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 5508.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "/media/nbi/Kituri/WINDOWS 10/WAMP/www/shared/userlogin.php",
-					"settings":
-					{
-						"buffer_size": 5799,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1581.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "js/app.js",
-					"settings":
-					{
-						"buffer_size": 5393,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
+						"translation.x": 338.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
