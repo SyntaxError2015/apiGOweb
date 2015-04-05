@@ -341,10 +341,10 @@ function showMessage(className, text) {
     messageDiv.html(text);
     messageDiv.fadeToggle(200);
     setTimeout(function () {
-        $("#message").fadeToggle(500);
-    }, 2000);
+        $("#message").fadeToggle(200);
+    }, 700);
     setTimeout(function () {
         $("#message").removeClass(className);
-    }, 2600);
+    }, 900);
 }
 

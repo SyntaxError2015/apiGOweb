@@ -130,7 +130,7 @@ md-progress-circular.md-default-theme .md-inner .md-right .md-half-circle {
     margin-top: -100px;
     width: 600px;
     height: 200px;
-    background-image: url("/images/logo.png");
+    /*background-image: url("/images/logo.png");*/
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
